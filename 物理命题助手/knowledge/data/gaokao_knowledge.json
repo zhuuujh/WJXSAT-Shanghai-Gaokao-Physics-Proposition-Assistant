@@ -1,0 +1,1562 @@
+{
+  "version": "1.0",
+  "updated": "2026-08-10",
+  "note": "上海物理等级考考点库（内置版，可编辑）。按力学/电磁学/热学/光学/原子与近代物理/实验六模块组织，教材来源为沪教版物理必修1-3与选择性必修1-3。is_required=true 的考点对应等级考高频必考内容。编码规范：{模块}-{大考点字母}-{序号}，如 M1-A-02。",
+  "modules": [
+    {
+      "code": "M1",
+      "name": "力学",
+      "textbook_source": "必修1、必修2、选必1"
+    },
+    {
+      "code": "M2",
+      "name": "电磁学",
+      "textbook_source": "必修3、选必2"
+    },
+    {
+      "code": "M3",
+      "name": "热学",
+      "textbook_source": "选必3"
+    },
+    {
+      "code": "M4",
+      "name": "光学",
+      "textbook_source": "选必1、选必3"
+    },
+    {
+      "code": "M5",
+      "name": "原子与近代物理",
+      "textbook_source": "选必3"
+    },
+    {
+      "code": "M6",
+      "name": "实验",
+      "textbook_source": "跨模块"
+    }
+  ],
+  "big_points": [
+    {
+      "code": "M1-A",
+      "name": "质点的直线运动",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "必修1 第一、二章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M1-B",
+      "name": "相互作用与物体平衡",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "必修1 第三章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M1-C",
+      "name": "牛顿运动定律",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-D",
+      "name": "曲线运动与抛体",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-E",
+      "name": "圆周运动",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-F",
+      "name": "万有引力与航天",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "必修2 第六章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-G",
+      "name": "机械能守恒定律",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "必修2 第七章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-H",
+      "name": "动量与动量守恒",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "选必1 第一章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-I",
+      "name": "机械振动",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "选必1 第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-J",
+      "name": "机械波",
+      "parent": "M1",
+      "module": "M1",
+      "textbook_source": "选必1 第三章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-A",
+      "name": "静电场",
+      "parent": "M2",
+      "module": "M2",
+      "textbook_source": "必修3 第九章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-B",
+      "name": "恒定电流",
+      "parent": "M2",
+      "module": "M2",
+      "textbook_source": "必修3 第十、十一章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-C",
+      "name": "磁场",
+      "parent": "M2",
+      "module": "M2",
+      "textbook_source": "选必2 第一章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-D",
+      "name": "电磁感应",
+      "parent": "M2",
+      "module": "M2",
+      "textbook_source": "选必2 第二章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-E",
+      "name": "交变电流与变压器",
+      "parent": "M2",
+      "module": "M2",
+      "textbook_source": "选必2 第三章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-F",
+      "name": "电磁振荡、电磁波与传感器",
+      "parent": "M2",
+      "module": "M2",
+      "textbook_source": "选必2 第四、五章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-A",
+      "name": "分子动理论",
+      "parent": "M3",
+      "module": "M3",
+      "textbook_source": "选必3 第一章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M3-B",
+      "name": "气体实验定律",
+      "parent": "M3",
+      "module": "M3",
+      "textbook_source": "选必3 第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M3-C",
+      "name": "热力学定律",
+      "parent": "M3",
+      "module": "M3",
+      "textbook_source": "选必3 第三章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M4-A",
+      "name": "光的折射与全反射",
+      "parent": "M4",
+      "module": "M4",
+      "textbook_source": "选必1 第四章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M4-B",
+      "name": "光的干涉、衍射与偏振",
+      "parent": "M4",
+      "module": "M4",
+      "textbook_source": "选必1 第五章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M4-C",
+      "name": "透镜成像与光学仪器",
+      "parent": "M4",
+      "module": "M4",
+      "textbook_source": "选必1 第四章、选必3",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M5-A",
+      "name": "原子结构",
+      "parent": "M5",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M5-B",
+      "name": "原子核",
+      "parent": "M5",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M5-C",
+      "name": "波粒二象性",
+      "parent": "M5",
+      "module": "M5",
+      "textbook_source": "选必3 第四章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M6-A",
+      "name": "力学实验",
+      "parent": "M6",
+      "module": "M6",
+      "textbook_source": "必修1、必修2 实验",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M6-B",
+      "name": "电学实验",
+      "parent": "M6",
+      "module": "M6",
+      "textbook_source": "必修3、选必2 实验",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M6-C",
+      "name": "光学与热学实验",
+      "parent": "M6",
+      "module": "M6",
+      "textbook_source": "选必1、选必3 实验",
+      "difficulty_level": "较难",
+      "is_required": true
+    }
+  ],
+  "points": [
+    {
+      "code": "M1-A-01",
+      "name": "质点与参考系、位移与路程",
+      "parent": "M1-A",
+      "module": "M1",
+      "textbook_source": "必修1 第一章 运动的描述",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-A-02",
+      "name": "速度、平均速度与瞬时速度",
+      "parent": "M1-A",
+      "module": "M1",
+      "textbook_source": "必修1 第一章 运动的描述",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-A-03",
+      "name": "匀变速直线运动的规律",
+      "parent": "M1-A",
+      "module": "M1",
+      "textbook_source": "必修1 第二章 匀变速直线运动",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-A-04",
+      "name": "自由落体运动与竖直上抛",
+      "parent": "M1-A",
+      "module": "M1",
+      "textbook_source": "必修1 第二章 匀变速直线运动",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-A-05",
+      "name": "v-t图像与x-t图像的分析",
+      "parent": "M1-A",
+      "module": "M1",
+      "textbook_source": "必修1 第一章、第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-A-06",
+      "name": "追及与相遇问题",
+      "parent": "M1-A",
+      "module": "M1",
+      "textbook_source": "必修1 第二章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-B-01",
+      "name": "重力、弹力与摩擦力",
+      "parent": "M1-B",
+      "module": "M1",
+      "textbook_source": "必修1 第三章 相互作用",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M1-B-02",
+      "name": "受力分析",
+      "parent": "M1-B",
+      "module": "M1",
+      "textbook_source": "必修1 第三章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M1-B-03",
+      "name": "力的合成与分解、正交分解法",
+      "parent": "M1-B",
+      "module": "M1",
+      "textbook_source": "必修1 第三章、第四章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-B-04",
+      "name": "共点力的平衡条件",
+      "parent": "M1-B",
+      "module": "M1",
+      "textbook_source": "必修1 第四章 牛顿运动定律",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-B-05",
+      "name": "动态平衡与临界问题",
+      "parent": "M1-B",
+      "module": "M1",
+      "textbook_source": "必修1 第三章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-B-06",
+      "name": "摩擦力方向的判定",
+      "parent": "M1-B",
+      "module": "M1",
+      "textbook_source": "必修1 第三章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-C-01",
+      "name": "牛顿第一定律与惯性",
+      "parent": "M1-C",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-C-02",
+      "name": "牛顿第二定律 F=ma",
+      "parent": "M1-C",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-C-03",
+      "name": "牛顿第三定律与作用力反作用力",
+      "parent": "M1-C",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M1-C-04",
+      "name": "连接体问题与整体隔离法",
+      "parent": "M1-C",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-C-05",
+      "name": "超重与失重",
+      "parent": "M1-C",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M1-C-06",
+      "name": "传送带与滑块问题",
+      "parent": "M1-C",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-C-07",
+      "name": "瞬时性问题（力的突变）",
+      "parent": "M1-C",
+      "module": "M1",
+      "textbook_source": "必修1 第四章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-D-01",
+      "name": "运动的合成与分解",
+      "parent": "M1-D",
+      "module": "M1",
+      "textbook_source": "必修2 第五章 曲线运动",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-D-02",
+      "name": "平抛运动",
+      "parent": "M1-D",
+      "module": "M1",
+      "textbook_source": "必修2 第五章 曲线运动",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-D-03",
+      "name": "斜抛运动",
+      "parent": "M1-D",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-D-04",
+      "name": "小船过河与关联速度问题",
+      "parent": "M1-D",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-E-01",
+      "name": "描述圆周运动的物理量",
+      "parent": "M1-E",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-E-02",
+      "name": "向心力与向心加速度",
+      "parent": "M1-E",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-E-03",
+      "name": "水平面内的圆周运动（转弯、圆锥摆）",
+      "parent": "M1-E",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-E-04",
+      "name": "竖直面内的圆周运动（拱桥、轨道、绳杆）",
+      "parent": "M1-E",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-E-05",
+      "name": "离心运动及其应用",
+      "parent": "M1-E",
+      "module": "M1",
+      "textbook_source": "必修2 第五章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-F-01",
+      "name": "万有引力定律与天体质量的计算",
+      "parent": "M1-F",
+      "module": "M1",
+      "textbook_source": "必修2 第六章 万有引力",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-F-02",
+      "name": "卫星运动规律与宇宙速度",
+      "parent": "M1-F",
+      "module": "M1",
+      "textbook_source": "必修2 第六章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-F-03",
+      "name": "同步卫星与卫星变轨问题",
+      "parent": "M1-F",
+      "module": "M1",
+      "textbook_source": "必修2 第六章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-F-04",
+      "name": "双星与多星系统",
+      "parent": "M1-F",
+      "module": "M1",
+      "textbook_source": "必修2 第六章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-G-01",
+      "name": "功与功率",
+      "parent": "M1-G",
+      "module": "M1",
+      "textbook_source": "必修2 第七章 机械能",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-G-02",
+      "name": "动能与动能定理",
+      "parent": "M1-G",
+      "module": "M1",
+      "textbook_source": "必修2 第七章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-G-03",
+      "name": "重力势能与弹性势能",
+      "parent": "M1-G",
+      "module": "M1",
+      "textbook_source": "必修2 第七章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M1-G-04",
+      "name": "机械能守恒定律",
+      "parent": "M1-G",
+      "module": "M1",
+      "textbook_source": "必修2 第七章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-G-05",
+      "name": "功能关系与能量守恒",
+      "parent": "M1-G",
+      "module": "M1",
+      "textbook_source": "必修2 第七章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-G-06",
+      "name": "机车启动问题（恒定功率与恒定加速度）",
+      "parent": "M1-G",
+      "module": "M1",
+      "textbook_source": "必修2 第七章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M1-H-01",
+      "name": "动量与冲量、动量定理",
+      "parent": "M1-H",
+      "module": "M1",
+      "textbook_source": "选必1 第一章 动量",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-H-02",
+      "name": "动量守恒定律",
+      "parent": "M1-H",
+      "module": "M1",
+      "textbook_source": "选必1 第一章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-H-03",
+      "name": "碰撞（弹性、非弹性、完全非弹性）",
+      "parent": "M1-H",
+      "module": "M1",
+      "textbook_source": "选必1 第一章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-H-04",
+      "name": "反冲现象与爆炸",
+      "parent": "M1-H",
+      "module": "M1",
+      "textbook_source": "选必1 第一章",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M1-H-05",
+      "name": "子弹打木块与板块模型",
+      "parent": "M1-H",
+      "module": "M1",
+      "textbook_source": "选必1 第一章",
+      "difficulty_level": "综合",
+      "is_required": true
+    },
+    {
+      "code": "M1-I-01",
+      "name": "简谐运动的描述（振幅、周期、相位）",
+      "parent": "M1-I",
+      "module": "M1",
+      "textbook_source": "选必1 第二章 机械振动",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-I-02",
+      "name": "简谐运动的回复力与能量",
+      "parent": "M1-I",
+      "module": "M1",
+      "textbook_source": "选必1 第二章",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M1-I-03",
+      "name": "单摆与周期公式",
+      "parent": "M1-I",
+      "module": "M1",
+      "textbook_source": "选必1 第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-I-04",
+      "name": "受迫振动与共振",
+      "parent": "M1-I",
+      "module": "M1",
+      "textbook_source": "选必1 第二章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-J-01",
+      "name": "波的产生与传播",
+      "parent": "M1-J",
+      "module": "M1",
+      "textbook_source": "选必1 第三章 机械波",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M1-J-02",
+      "name": "波的图像与振动图像",
+      "parent": "M1-J",
+      "module": "M1",
+      "textbook_source": "选必1 第三章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-J-03",
+      "name": "波长、波速与频率的关系 v=λf",
+      "parent": "M1-J",
+      "module": "M1",
+      "textbook_source": "选必1 第三章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M1-J-04",
+      "name": "波的干涉与衍射",
+      "parent": "M1-J",
+      "module": "M1",
+      "textbook_source": "选必1 第三章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M1-J-05",
+      "name": "多普勒效应",
+      "parent": "M1-J",
+      "module": "M1",
+      "textbook_source": "选必1 第三章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M2-A-01",
+      "name": "电荷守恒与库仑定律",
+      "parent": "M2-A",
+      "module": "M2",
+      "textbook_source": "必修3 第九章 静电场",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M2-A-02",
+      "name": "电场强度与电场线",
+      "parent": "M2-A",
+      "module": "M2",
+      "textbook_source": "必修3 第九章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M2-A-03",
+      "name": "电势、电势差与等势面",
+      "parent": "M2-A",
+      "module": "M2",
+      "textbook_source": "必修3 第九章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-A-04",
+      "name": "电场力做功与电势能",
+      "parent": "M2-A",
+      "module": "M2",
+      "textbook_source": "必修3 第九章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-A-05",
+      "name": "电势差与电场强度的关系",
+      "parent": "M2-A",
+      "module": "M2",
+      "textbook_source": "必修3 第九章",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M2-A-06",
+      "name": "电容器与电容",
+      "parent": "M2-A",
+      "module": "M2",
+      "textbook_source": "必修3 第十章 电容",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-A-07",
+      "name": "带电粒子在电场中的运动",
+      "parent": "M2-A",
+      "module": "M2",
+      "textbook_source": "必修3 第九章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-B-01",
+      "name": "电流、电压、电阻与欧姆定律",
+      "parent": "M2-B",
+      "module": "M2",
+      "textbook_source": "必修3 第十章 电路",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M2-B-02",
+      "name": "电阻定律与半导体",
+      "parent": "M2-B",
+      "module": "M2",
+      "textbook_source": "必修3 第十章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M2-B-03",
+      "name": "串并联电路与电表改装",
+      "parent": "M2-B",
+      "module": "M2",
+      "textbook_source": "必修3 第十章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-B-04",
+      "name": "电功、电功率与焦耳定律",
+      "parent": "M2-B",
+      "module": "M2",
+      "textbook_source": "必修3 第十章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-B-05",
+      "name": "闭合电路欧姆定律",
+      "parent": "M2-B",
+      "module": "M2",
+      "textbook_source": "必修3 第十一章 闭合电路",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-B-06",
+      "name": "电源的功率与效率",
+      "parent": "M2-B",
+      "module": "M2",
+      "textbook_source": "必修3 第十一章",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M2-B-07",
+      "name": "电路动态分析",
+      "parent": "M2-B",
+      "module": "M2",
+      "textbook_source": "必修3 第十一章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-C-01",
+      "name": "磁场、磁感线与磁感应强度",
+      "parent": "M2-C",
+      "module": "M2",
+      "textbook_source": "选必2 第一章 磁场",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M2-C-02",
+      "name": "安培力及其方向判断",
+      "parent": "M2-C",
+      "module": "M2",
+      "textbook_source": "选必2 第一章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-C-03",
+      "name": "洛伦兹力",
+      "parent": "M2-C",
+      "module": "M2",
+      "textbook_source": "选必2 第一章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-C-04",
+      "name": "带电粒子在磁场中的运动",
+      "parent": "M2-C",
+      "module": "M2",
+      "textbook_source": "选必2 第一章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-C-05",
+      "name": "质谱仪与回旋加速器",
+      "parent": "M2-C",
+      "module": "M2",
+      "textbook_source": "选必2 第一章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M2-D-01",
+      "name": "磁通量及其变化",
+      "parent": "M2-D",
+      "module": "M2",
+      "textbook_source": "选必2 第二章 电磁感应",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M2-D-02",
+      "name": "楞次定律与右手定则",
+      "parent": "M2-D",
+      "module": "M2",
+      "textbook_source": "选必2 第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-D-03",
+      "name": "法拉第电磁感应定律 E=ΔΦ/Δt",
+      "parent": "M2-D",
+      "module": "M2",
+      "textbook_source": "选必2 第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-D-04",
+      "name": "导体棒切割磁感线",
+      "parent": "M2-D",
+      "module": "M2",
+      "textbook_source": "选必2 第二章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-D-05",
+      "name": "电磁感应中的电路与能量问题",
+      "parent": "M2-D",
+      "module": "M2",
+      "textbook_source": "选必2 第二章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-D-06",
+      "name": "自感现象与自感电动势",
+      "parent": "M2-D",
+      "module": "M2",
+      "textbook_source": "选必2 第二章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M2-E-01",
+      "name": "交变电流的产生与描述",
+      "parent": "M2-E",
+      "module": "M2",
+      "textbook_source": "选必2 第三章 交变电流",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M2-E-02",
+      "name": "正弦式交变电流的有效值",
+      "parent": "M2-E",
+      "module": "M2",
+      "textbook_source": "选必2 第三章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M2-E-03",
+      "name": "变压器与远距离输电",
+      "parent": "M2-E",
+      "module": "M2",
+      "textbook_source": "选必2 第三章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M2-F-01",
+      "name": "电磁振荡与电磁波",
+      "parent": "M2-F",
+      "module": "M2",
+      "textbook_source": "选必2 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M2-F-02",
+      "name": "电磁波的发射与接收",
+      "parent": "M2-F",
+      "module": "M2",
+      "textbook_source": "选必2 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M2-F-03",
+      "name": "传感器及其应用",
+      "parent": "M2-F",
+      "module": "M2",
+      "textbook_source": "选必2 第五章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-A-01",
+      "name": "分子动理论的基本内容",
+      "parent": "M3-A",
+      "module": "M3",
+      "textbook_source": "选必3 第一章 分子动理论",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-A-02",
+      "name": "阿伏加德罗常数与微观量估算",
+      "parent": "M3-A",
+      "module": "M3",
+      "textbook_source": "选必3 第一章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M3-A-03",
+      "name": "分子热运动与布朗运动",
+      "parent": "M3-A",
+      "module": "M3",
+      "textbook_source": "选必3 第一章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-A-04",
+      "name": "分子间作用力与分子势能",
+      "parent": "M3-A",
+      "module": "M3",
+      "textbook_source": "选必3 第一章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-A-05",
+      "name": "温度与温标",
+      "parent": "M3-A",
+      "module": "M3",
+      "textbook_source": "选必3 第一章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-B-01",
+      "name": "理想气体状态方程",
+      "parent": "M3-B",
+      "module": "M3",
+      "textbook_source": "选必3 第二章 气体",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M3-B-02",
+      "name": "玻意耳定律（等温变化）",
+      "parent": "M3-B",
+      "module": "M3",
+      "textbook_source": "选必3 第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M3-B-03",
+      "name": "查理定律（等容）与盖-吕萨克定律（等压）",
+      "parent": "M3-B",
+      "module": "M3",
+      "textbook_source": "选必3 第二章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M3-B-04",
+      "name": "气体图像分析（p-V、V-T、p-T）",
+      "parent": "M3-B",
+      "module": "M3",
+      "textbook_source": "选必3 第二章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M3-B-05",
+      "name": "气体压强的微观解释",
+      "parent": "M3-B",
+      "module": "M3",
+      "textbook_source": "选必3 第二章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-C-01",
+      "name": "功、热传递与内能",
+      "parent": "M3-C",
+      "module": "M3",
+      "textbook_source": "选必3 第三章 热力学定律",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-C-02",
+      "name": "热力学第一定律",
+      "parent": "M3-C",
+      "module": "M3",
+      "textbook_source": "选必3 第三章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M3-C-03",
+      "name": "热力学第二定律与熵",
+      "parent": "M3-C",
+      "module": "M3",
+      "textbook_source": "选必3 第三章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-C-04",
+      "name": "能量守恒定律",
+      "parent": "M3-C",
+      "module": "M3",
+      "textbook_source": "选必3 第三章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M3-C-05",
+      "name": "气体实验定律与热力学定律综合",
+      "parent": "M3-C",
+      "module": "M3",
+      "textbook_source": "选必3 第二、三章",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M4-A-01",
+      "name": "光的反射定律与折射定律",
+      "parent": "M4-A",
+      "module": "M4",
+      "textbook_source": "选必1 第四章 光",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M4-A-02",
+      "name": "折射率与光速的关系",
+      "parent": "M4-A",
+      "module": "M4",
+      "textbook_source": "选必1 第四章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M4-A-03",
+      "name": "全反射与临界角",
+      "parent": "M4-A",
+      "module": "M4",
+      "textbook_source": "选必1 第四章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M4-A-04",
+      "name": "光的色散",
+      "parent": "M4-A",
+      "module": "M4",
+      "textbook_source": "选必1 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M4-A-05",
+      "name": "光导纤维与应用",
+      "parent": "M4-A",
+      "module": "M4",
+      "textbook_source": "选必1 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M4-B-01",
+      "name": "双缝干涉与条纹间距",
+      "parent": "M4-B",
+      "module": "M4",
+      "textbook_source": "选必1 第五章 光的干涉",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M4-B-02",
+      "name": "薄膜干涉",
+      "parent": "M4-B",
+      "module": "M4",
+      "textbook_source": "选必1 第五章",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M4-B-03",
+      "name": "单缝衍射与圆孔衍射",
+      "parent": "M4-B",
+      "module": "M4",
+      "textbook_source": "选必1 第五章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M4-B-04",
+      "name": "光的偏振",
+      "parent": "M4-B",
+      "module": "M4",
+      "textbook_source": "选必1 第五章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M4-C-01",
+      "name": "透镜成像规律",
+      "parent": "M4-C",
+      "module": "M4",
+      "textbook_source": "选必1 第四章、选必3",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M4-C-02",
+      "name": "光路图的作法（特殊光线）",
+      "parent": "M4-C",
+      "module": "M4",
+      "textbook_source": "选必1 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M5-A-01",
+      "name": "电子的发现与汤姆孙原子模型",
+      "parent": "M5-A",
+      "module": "M5",
+      "textbook_source": "选必3 第五章 原子核",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M5-A-02",
+      "name": "卢瑟福α粒子散射实验",
+      "parent": "M5-A",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M5-A-03",
+      "name": "玻尔原子模型与能级",
+      "parent": "M5-A",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M5-A-04",
+      "name": "氢原子光谱与能级跃迁",
+      "parent": "M5-A",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M5-A-05",
+      "name": "能级跃迁与光子（hν=ΔE）",
+      "parent": "M5-A",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M5-B-01",
+      "name": "天然放射性与三种射线",
+      "parent": "M5-B",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "基础",
+      "is_required": true
+    },
+    {
+      "code": "M5-B-02",
+      "name": "核反应方程与核衰变",
+      "parent": "M5-B",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M5-B-03",
+      "name": "半衰期",
+      "parent": "M5-B",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M5-B-04",
+      "name": "核力、结合能与比结合能",
+      "parent": "M5-B",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M5-B-05",
+      "name": "质能方程与核能计算",
+      "parent": "M5-B",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M5-B-06",
+      "name": "核裂变与核聚变",
+      "parent": "M5-B",
+      "module": "M5",
+      "textbook_source": "选必3 第五章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M5-C-01",
+      "name": "光电效应及其规律",
+      "parent": "M5-C",
+      "module": "M5",
+      "textbook_source": "选必3 第四章 波粒二象性",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M5-C-02",
+      "name": "光子说与爱因斯坦光电效应方程",
+      "parent": "M5-C",
+      "module": "M5",
+      "textbook_source": "选必3 第四章",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M5-C-03",
+      "name": "康普顿效应",
+      "parent": "M5-C",
+      "module": "M5",
+      "textbook_source": "选必3 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M5-C-04",
+      "name": "德布罗意波与物质波",
+      "parent": "M5-C",
+      "module": "M5",
+      "textbook_source": "选必3 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M5-C-05",
+      "name": "不确定关系",
+      "parent": "M5-C",
+      "module": "M5",
+      "textbook_source": "选必3 第四章",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M6-A-01",
+      "name": "用打点计时器测匀变速直线运动的加速度",
+      "parent": "M6-A",
+      "module": "M6",
+      "textbook_source": "必修1 学生实验",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M6-A-02",
+      "name": "探究加速度与力、质量的关系",
+      "parent": "M6-A",
+      "module": "M6",
+      "textbook_source": "必修1 学生实验",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M6-A-03",
+      "name": "验证机械能守恒定律",
+      "parent": "M6-A",
+      "module": "M6",
+      "textbook_source": "必修2 学生实验",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M6-A-04",
+      "name": "探究平抛运动的特点",
+      "parent": "M6-A",
+      "module": "M6",
+      "textbook_source": "必修2 学生实验",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M6-A-05",
+      "name": "验证动量守恒定律",
+      "parent": "M6-A",
+      "module": "M6",
+      "textbook_source": "选必1 学生实验",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M6-A-06",
+      "name": "探究弹力与弹簧伸长量的关系",
+      "parent": "M6-A",
+      "module": "M6",
+      "textbook_source": "必修1 学生实验",
+      "difficulty_level": "基础",
+      "is_required": false
+    },
+    {
+      "code": "M6-A-07",
+      "name": "用单摆测量重力加速度",
+      "parent": "M6-A",
+      "module": "M6",
+      "textbook_source": "选必1 学生实验",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M6-B-01",
+      "name": "测量金属的电阻率",
+      "parent": "M6-B",
+      "module": "M6",
+      "textbook_source": "必修3 学生实验",
+      "difficulty_level": "中等",
+      "is_required": false
+    },
+    {
+      "code": "M6-B-02",
+      "name": "伏安法测电阻（内接外接、滑动变阻器）",
+      "parent": "M6-B",
+      "module": "M6",
+      "textbook_source": "必修3 学生实验",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M6-B-03",
+      "name": "测电源的电动势和内阻",
+      "parent": "M6-B",
+      "module": "M6",
+      "textbook_source": "必修3 学生实验",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M6-B-04",
+      "name": "描绘小灯泡的伏安特性曲线",
+      "parent": "M6-B",
+      "module": "M6",
+      "textbook_source": "必修3 学生实验",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M6-B-05",
+      "name": "电表改装与校准",
+      "parent": "M6-B",
+      "module": "M6",
+      "textbook_source": "必修3 学生实验",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M6-B-06",
+      "name": "用多用电表测量电阻",
+      "parent": "M6-B",
+      "module": "M6",
+      "textbook_source": "必修3 学生实验",
+      "difficulty_level": "中等",
+      "is_required": true
+    },
+    {
+      "code": "M6-C-01",
+      "name": "插针法测玻璃折射率",
+      "parent": "M6-C",
+      "module": "M6",
+      "textbook_source": "选必1 学生实验",
+      "difficulty_level": "较难",
+      "is_required": true
+    },
+    {
+      "code": "M6-C-02",
+      "name": "双缝干涉测光的波长",
+      "parent": "M6-C",
+      "module": "M6",
+      "textbook_source": "选必1 学生实验",
+      "difficulty_level": "较难",
+      "is_required": false
+    },
+    {
+      "code": "M6-C-03",
+      "name": "油膜法估测分子直径",
+      "parent": "M6-C",
+      "module": "M6",
+      "textbook_source": "选必3 学生实验",
+      "difficulty_level": "中等",
+      "is_required": true
+    }
+  ]
+}

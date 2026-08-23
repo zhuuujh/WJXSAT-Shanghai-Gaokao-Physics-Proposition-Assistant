@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📐 上海物理等级考智能命题助手</title>
+<!-- 引入PDF解析库 pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<!-- 引入Word解析库 mammoth.js -->
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+<style>
+  /* ========== 全局样式 ========== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4ecf7 100%);
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a3a6b, #2d6a9f);
+    color: white; padding: 24px 20px; text-align: center;
+  }
+  .header h1 { font-size: 26px; margin-bottom: 6px; }
+  .header p { opacity: 0.9; font-size: 14px; }
+
+  .container {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 380px 1fr; gap: 20px; padding: 20px;
+  }
+  @media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
+
+  /* ========== 左侧设置面板 ========== */
+  .panel {
+    background: white; border-radius: 12px; padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); height: fit-content;
+    position: sticky; top: 20px;
+  }
+  .panel h2 { font-size: 16px; color: #1a3a6b; margin-bottom: 14px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block; font-size: 13px; color: #555; margin-bottom: 5px; font-weight: 600;
+  }
+  select, input[type="text"], input[type="password"], textarea {
+    width: 100%; padding: 9px 12px; border: 1px solid #d0d7e2;
+    border-radius: 8px; font-size: 14px; outline: none; transition: border 0.2s;
+    font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 90px; }
+  select:focus, input:focus, textarea:focus { border-color: #2d6a9f; }
+
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .checkbox-group label {
+    display: flex; align-items: center; gap: 4px; font-size: 13px;
+    background: #f0f4fa; padding: 5px 10px; border-radius: 6px; cursor: pointer;
+  }
+  .btn {
+    width: 100%; padding: 12px; border: none; border-radius: 8px;
+    background: linear-gradient(135deg, #2d6a9f, #1a3a6b);
+    color: white; font-size: 16px; font-weight: 700; cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.9; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-print { background: linear-gradient(135deg, #27ae60, #1e8449); margin-top: 10px; }
+  .hint { font-size: 12px; color: #999; margin-top: 6px; line-height: 1.5; }
+  .status { font-size: 13px; margin-top: 10px; min-height: 20px; color: #2d6a9f; }
+  .note-warn {
+    font-size: 12px; color: #8a5a00; background: #fff8e1; border: 1px solid #ffe082;
+    border-radius: 8px; padding: 10px 12px; margin-bottom: 16px; line-height: 1.7;
+  }
+  .file-info {
+    font-size: 12px; color: #27ae60; margin-top: 6px; min-height: 16px;
+  }
+  .upload-box {
+    border: 2px dashed #c5d3e8; border-radius: 8px; padding: 14px;
+    text-align: center; cursor: pointer; transition: all 0.2s; background: #f8fafd;
+  }
+  .upload-box:hover { border-color: #2d6a9f; background: #eef4fc; }
+  .upload-box .icon { font-size: 26px; }
+  .upload-box .text { font-size: 13px; color: #888; margin-top: 4px; }
+
+  /* ========== 右侧预览区 ========== */
+  .preview-area {
+    background: white; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); min-height: 600px;
+  }
+  .preview-bar {
+    background: #f0f4fa; padding: 10px 15px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .preview-bar span { font-size: 14px; color: #1a3a6b; font-weight: 600; }
+  iframe { width: 100%; height: 650px; border: none; }
+  .placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    height: 600px; color: #bbb; font-size: 15px;
+  }
+  .placeholder .icon { font-size: 60px; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部标题 ===== -->
+<div class="header">
+  <h1>📐 上海物理等级考智能命题助手</h1>
+  <p>描述一个情境、或上传一道题目的背景资料，AI帮你命制上海物理等级考风格的试题</p>
+  <p style="font-size:12px;opacity:0.7;margin-top:4px;">用户自带API密钥 · 纯前端 · 零成本</p>
+</div>
+
+<div class="container">
+  <!-- ===== 左侧：设置面板 ===== -->
+  <div class="panel">
+    <h2>⚙️ 命题设置</h2>
+
+    <div class="form-group">
+      <label>🤖 选择AI提供商</label>
+      <select id="provider" onchange="onProviderChange()">
+        <option value="claude">Claude（视觉强，直连）</option>
+        <option value="deepseek">DeepSeek（便宜，需代理）</option>
+      </select>
+      <div class="hint" id="providerHint">Claude视觉强、中文好，浏览器可直接调用</div>
+    </div>
+
+    <div class="form-group">
+      <label id="keyLabel">🔑 Claude API 密钥</label>
+      <input type="password" id="apiKey" placeholder="sk-ant-..." oninput="checkReady()">
+      <div class="hint" id="keyHint">密钥只在你自己的浏览器里使用，不上传任何服务器。注册：console.anthropic.com</div>
+    </div>
+
+    <!-- DeepSeek代理URL（可选） -->
+    <div class="form-group" id="proxyGroup" style="display:none;">
+      <label>🛰️ DeepSeek 代理URL（可选）</label>
+      <input type="text" id="proxyUrl" placeholder="留空则直连官方API（可能被CORS拦截）">
+      <div class="hint">DeepSeek官方API不支持浏览器直连，需填CORS代理。例如：<br>https://corsproxy.io/? 或 https://api.allorigins.win/raw?url=</div>
+    </div>
+
+    <!-- 描述输入 -->
+    <div class="form-group">
+      <label>💬 描述一个情境 / 想考的知识点（二选一或都用）</label>
+      <textarea id="description" placeholder="例如：我想考带电粒子在磁场中的运动，请结合极光这个自然现象命制一道大题。&#10;&#10;或者描述一个情景：&#10;'复兴号动车组从启动到进站的完整旅程'"></textarea>
+      <div class="hint">可以直接描述，也可以先描述再上传文件（二选一即可）</div>
+    </div>
+
+    <!-- 文件上传 -->
+    <div class="form-group">
+      <label>📎 或上传题目背景资料（可选）</label>
+      <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+        <div class="icon">📁</div>
+        <div class="text">点击选择文件：图片 / PDF / Word / 文本</div>
+      </div>
+      <input type="file" id="fileInput" style="display:none;"
+             accept=".pdf,.docx,.doc,.txt,.md,.jpg,.jpeg,.png,.gif,.webp"
+             onchange="handleFile(this.files[0])">
+      <div class="file-info" id="fileInfo"></div>
+      <div class="hint">图片会直接发给AI理解；PDF/Word/文本会自动提取内容</div>
+    </div>
+
+    <!-- 题型 -->
+    <div class="form-group">
+      <label>📝 题型（可多选）</label>
+      <div class="checkbox-group" id="qtypeBox">
+        <label><input type="checkbox" value="单选"> 单选</label>
+        <label><input type="checkbox" value="多选" checked> 多选</label>
+        <label><input type="checkbox" value="填空"> 填空</label>
+        <label><input type="checkbox" value="计算" checked> 计算</label>
+        <label><input type="checkbox" value="论证/简答"> 论证/简答</label>
+      </div>
+    </div>
+
+    <!-- 规模 -->
+    <div class="form-group">
+      <label>📄 生成规模</label>
+      <select id="scale">
+        <option value="1道大题" selected>1道大题（3-5小题）</option>
+        <option value="完整试卷">完整试卷（6道大题）</option>
+      </select>
+    </div>
+
+    <!-- 配图说明：图像不一定准确 -->
+    <div class="note-warn">
+      ⚠️ <b>配图说明</b>：AI 生成的物理示意图（受力图/电路图/图像题等）为<b>示意性草稿</b>，
+      箭头方向、标注文字、线条粗细可能不完全准确，<b>请根据实际物理情境核对调整</b>后再使用。
+      本目录的 `绘图参考/drawing_prompts.md` 含 20 套按考点分类的绘图模板与两阶段工作流
+      （先文生图出草图、再图编辑精修）。
+    </div>
+
+    <button class="btn" id="genBtn" onclick="generate()" disabled>🚀 生成试卷</button>
+    <button class="btn btn-print" onclick="printPDF()" disabled id="printBtn">🖨️ 打印 / 保存为PDF</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <!-- ===== 右侧：预览区 ===== -->
+  <div class="preview-area">
+    <div class="preview-bar">
+      <span>📖 试卷预览</span>
+      <span id="barInfo" style="font-weight:normal;color:#888;">未生成</span>
+    </div>
+    <div id="placeholder" class="placeholder">
+      <div class="icon">📄</div>
+      <div>描述一个情境，或上传题目背景资料</div>
+      <div style="font-size:12px;margin-top:8px;">生成的试卷将显示在这里，可打印为PDF</div>
+    </div>
+    <iframe id="preview" style="display:none;"></iframe>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 第0部分：全局变量（保存上传的文件内容）
+// ============================================================
+let uploadedImage = null;   // { media_type, data(base64) } —— 图片
+let uploadedText = "";      // 从PDF/Word/文本提取的文字
+
+// ============================================================
+// 第1部分：命题规范提示词（核心！把命题经验写进去）
+// ============================================================
+const 命题规范 = `
+你是上海物理等级考命题专家。用户会给你一个情境描述，或上传题目背景资料。
+请根据用户提供的情境/资料命制试题，严格遵循以下规范：
+
+【情境处理】
+1. 如果用户提供了情境描述或背景资料，基于它命制试题
+2. 如果用户上传的是现成题目/教材内容，不要照搬，将其改编成上海等级考风格的新题
+3. 从用户给的情境中挖掘物理考点，用情境承载物理知识
+
+【试卷格式】
+1. 大题标题居中，格式如"一、×××（18分）"
+2. 每道大题3-5个小题，严格由易到难排列
+3. 卷首需包含：考试时间60分钟、满分100分、特别提示（多选规则、g取9.8）
+
+【命题原则】
+1. 每个大题内部考点绝不重复，各小题考察不同知识维度
+2. 高度情境化：用真实生活/科技/自然现象场景承载物理知识，避免机械计算
+3. 设置情境过渡：出完较易的题后扩展情境（但不脱离主线），命制思维量更大的题
+4. 适当设计概念辨析题（"你同意/不同意，理由是__"）。概念辨析可取材常见易错概念，例如：
+   "合力与分力等效性中的'效果'只指改变运动状态、不含形变效果"、"平均速度≠速度的平均值"、
+   "作用力与反作用力 vs 一对平衡力"、"摩擦力产生是否必须接触面不光滑"、
+   "环绕速度≠发射速度"、"电势差 vs 电压"等，据此设计"看似正确实则错误"的干扰项
+5. 思维难度大于计算难度，多出判断说理、方案论证题
+6. 从课本挖掘物理精华，可用中国科技成就、古代科技、物理学史作素材
+7. 题型多样化：单选、多选、填空、计算、简答、论证、作图混合
+8. 概念表述严谨（命题红线）：不用"光滑平面/光滑表面"（改说"接触面间摩擦可忽略"），
+   不用"滚动摩擦"（它本质是力矩不是力，只说"用滚动代替滑动可减小摩擦"）；
+   分清"分力 vs 分量""重力垂直斜面分力 vs 对斜面正压力""磁感应强度B vs 磁场强度H"
+   "电荷 vs 电量""点电荷 vs 检验电荷"等易混术语；受力分析前先明确"建立质点模型"这一步
+
+【难度】
+- 保持上海物理等级考的标准命题难度（参考近年真题水平）
+- 每道大题内小题严格由易到难，前易后难
+- 基础概念题在前，综合论证题在后
+
+【题目配图要求 - 物理示意图】
+1. 题干需要情境图/受力图/电路图/图像题配图时，在题干中用文字精确描述图的构成
+   （元素、位置、箭头方向、标注符号），格式如："图1为……（画出……）"
+2. 示意图遵循真题黑白线稿风格：物体用规则矩形/圆/三角、细线描边，力/速度用实心小箭头，
+   虚线表示辅助线/法线，坐标轴带箭头并标注单位（t/s、v/(m·s⁻¹)），电路用规范符号
+   （电源 -|、电阻 ▭、电流表/电压表圈内 A/V）
+3. 尽量在HTML中用一个<svg>或描述性文本占位呈现示意图，保持整套卷风格一致
+4. 配图采用两阶段工作流：阶段一先用文生图生成草图（保证要素齐全、结构正确）；
+   阶段二再用图编辑模型局部精修（①箭头从质心/作用点正确引出且方向符合物理规律，
+   ②标注文字中文宋体、物理量符号斜体、单位正体、字号统一并纠错别字，
+   ③线条粗细统一为细线、去彩色去填充），确保物理正确性与整套卷风格一致
+5. AI生成的示意图是示意性草稿，箭头方向、标注文字、线条粗细可能不完全准确；
+   题干文字必须精确描述图的构成（元素/位置/箭头方向/标注符号），
+   便于使用者按实际物理情境核对调整后使用
+
+【输出格式 - 非常重要】
+输出一个完整的、可直接在浏览器打开的HTML文档，要求：
+1. 用 <!DOCTYPE html> 开头，含 <html><head><body>
+2. 在<head>中加入 MathJax 公式渲染库：
+   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"><\/script>
+3. 物理公式用 \\(...\\) 或 \\[...\\] 表示（MathJax语法）
+4. 试卷正文、参考答案（另起一页用分页符）、双向细目表（表格）三部分
+5. 双向细目表用<table>表格：列包含 大题/小题号/考点/教材来源/难度/分值
+6. 添加打印样式：@media print { .page-break { page-break-before: always; } }
+7. 只输出HTML代码本身，不要用代码块包裹，不要输出任何其他文字
+8. 在输出文档的最末尾（</html> 之后）追加一个 HTML 注释块，内含结构化双向细目表 JSON，
+   格式如下（注释块不影响页面渲染与打印，程序会解析它做考点校验）：
+   <!--#SPEC_TABLE_JSON_START#
+   {"rows":[
+     {"sub":"1-1","point_code":"M1-A-02","point_name":"匀变速直线运动的规律","textbook_source":"必修1 第二章","difficulty":"易","score":4},
+     {"sub":"1-2","point_code":"M1-A-03","point_name":"v-t图像与x-t图像","textbook_source":"必修1 第二章","difficulty":"中","score":6}
+   ],"score_total":100}
+   #SPEC_TABLE_JSON_END#-->
+   rows 中的 sub 为"大题-小题"编号，point_code 从上海物理等级考考点编码库选取；
+   若无法确定编码，point_code 留空、保留 point_name 即可。score 为该小题分值，
+   score_total 为整卷总分（完整试卷应为100分）。
+
+`;
+
+// ============================================================
+// 第2部分：文件上传处理
+// ============================================================
+async function handleFile(file) {
+  if (!file) return;
+  const info = document.getElementById("fileInfo");
+  const ext = file.name.split(".").pop().toLowerCase();
+  const imageTypes = ["jpg", "jpeg", "png", "gif", "webp"];
+
+  // 清空旧状态
+  uploadedImage = null;
+  uploadedText = "";
+
+  try {
+    // ----- 情况1：图片 → 转base64，发给AI看 -----
+    if (imageTypes.includes(ext)) {
+      const base64 = await fileToBase64(file);
+      uploadedImage = {
+        media_type: file.type || "image/jpeg",
+        data: base64
+      };
+      info.textContent = `🖼️ 已读取图片：${file.name}`;
+    }
+    // ----- 情况2：PDF → 用pdf.js提取文本 -----
+    else if (ext === "pdf") {
+      info.textContent = "⏳ 正在解析PDF...";
+      const arrayBuffer = await file.arrayBuffer();
+      const pdfjs = window["pdfjs-dist/build/pdf"];
+      pdfjs.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
+      let text = "";
+      for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(" ") + "\n";
+      }
+      uploadedText = text;
+      info.textContent = `📄 已读取PDF（${pdf.numPages}页，提取${text.length}字符）`;
+    }
+    // ----- 情况3：Word(docx) → 用mammoth提取文本 -----
+    else if (ext === "docx") {
+      info.textContent = "⏳ 正在解析Word...";
+      const arrayBuffer = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({ arrayBuffer: arrayBuffer });
+      uploadedText = result.value;
+      info.textContent = `📝 已读取Word（${uploadedText.length}字符）`;
+    }
+    // ----- 情况4：纯文本文件 -----
+    else if (["txt", "md", "doc"].includes(ext)) {
+      const text = await file.text();
+      uploadedText = text;
+      info.textContent = `📄 已读取文本（${text.length}字符）`;
+    }
+    // ----- 其他格式 -----
+    else {
+      info.textContent = "⚠️ 暂不支持的格式，请用图片/PDF/Word/文本";
+    }
+    checkReady();
+  } catch (e) {
+    console.error(e);
+    info.textContent = "❌ 文件读取失败：" + e.message;
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      // 去掉 "data:image/png;base64," 前缀，只留base64数据
+      const dataUrl = reader.result;
+      const base64 = dataUrl.split(",")[1];
+      resolve(base64);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// ============================================================
+// 第3部分：调用 AI（Claude / DeepSeek 可选）
+// ============================================================
+
+// 切换AI提供商时，更新界面提示
+function onProviderChange() {
+  const provider = document.getElementById("provider").value;
+  const isDeepSeek = provider === "deepseek";
+
+  // 更新API key提示
+  if (isDeepSeek) {
+    document.getElementById("keyLabel").textContent = "🔑 DeepSeek API 密钥";
+    document.getElementById("apiKey").placeholder = "sk-...";
+    document.getElementById("keyHint").innerHTML =
+      "密钥只在你自己的浏览器里使用。注册：platform.deepseek.com";
+    document.getElementById("providerHint").textContent =
+      "DeepSeek价格便宜、国内直连，但官方API不支持浏览器直连，需配置代理";
+    document.getElementById("proxyGroup").style.display = "";
+  } else {
+    document.getElementById("keyLabel").textContent = "🔑 Claude API 密钥";
+    document.getElementById("apiKey").placeholder = "sk-ant-...";
+    document.getElementById("keyHint").innerHTML =
+      "密钥只在你自己的浏览器里使用，不上传任何服务器。注册：console.anthropic.com";
+    document.getElementById("providerHint").textContent =
+      "Claude视觉强、中文好，浏览器可直接调用";
+    document.getElementById("proxyGroup").style.display = "none";
+  }
+  checkReady();
+}
+
+async function generate() {
+  const apiKey = document.getElementById("apiKey").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const scale = document.getElementById("scale").value;
+  const provider = document.getElementById("provider").value;
+
+  const qtypes = [];
+  document.querySelectorAll("#qtypeBox input:checked").forEach(cb => qtypes.push(cb.value));
+
+  // 校验：必须有描述 或 上传了内容
+  if (!apiKey) { showStatus("⚠️ 请填写API密钥", "red"); return; }
+  if (!description && !uploadedText && !uploadedImage) {
+    showStatus("⚠️ 请描述一个情境，或上传题目背景资料", "red"); return;
+  }
+
+  const btn = document.getElementById("genBtn");
+  btn.disabled = true;
+  showStatus("🤖 AI命题中，通常需要30~60秒...", "#2d6a9f");
+  document.getElementById("placeholder").style.display = "flex";
+  document.getElementById("preview").style.display = "none";
+  document.getElementById("barInfo").textContent = "生成中...";
+
+  // 组装文字部分（Claude和DeepSeek通用）
+  let userText = "";
+  if (description) {
+    userText += `【情境描述】\n${description}\n\n`;
+  }
+  if (uploadedText) {
+    userText += `【用户上传资料的文字内容】\n${uploadedText.slice(0, 6000)}\n\n`;
+  }
+  userText += `【命题要求】\n请根据以上情境/资料，命制上海物理等级考风格的物理试题。\n`;
+  userText += `题型要求：${qtypes.join("、")}。\n`;
+  userText += `规模：${scale === "1道大题" ? "命制1道完整的大题（含3-5个小题）" : "命制完整6道大题的试卷"}。\n`;
+  userText += `请严格按照命题规范出题。`;
+
+  try {
+    let html;
+    if (provider === "claude") {
+      // ----- Claude：支持图片视觉 -----
+      const contentParts = [];
+      if (uploadedImage) {
+        contentParts.push({
+          type: "image",
+          source: {
+            type: "base64",
+            media_type: uploadedImage.media_type,
+            data: uploadedImage.data
+          }
+        });
+      }
+      contentParts.push({ type: "text", text: userText });
+
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+          // 浏览器直连必需的请求头
+          "anthropic-dangerous-direct-browser-access": "true"
+        },
+        body: JSON.stringify({
+          model: "claude-sonnet-5",
+          max_tokens: 12000,
+          system: 命题规范,
+          messages: [{ role: "user", content: contentParts }]
+        })
+      });
+
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.error?.message || `HTTP ${response.status}`);
+      }
+      const data = await response.json();
+      html = data.content[0].text;
+
+    } else {
+      // ----- DeepSeek：OpenAI兼容格式 -----
+      if (uploadedImage) {
+        showStatus("⚠️ DeepSeek暂不支持图片，已忽略图片，请补充文字描述", "orange");
+      }
+
+      // 构造API地址：有代理则用代理，否则直连官方
+      let proxyUrl = document.getElementById("proxyUrl").value.trim();
+      let apiUrl = "https://api.deepseek.com/v1/chat/completions";
+      if (proxyUrl) {
+        // 代理前缀拼接（支持 corsproxy.io/? 或 allorigins 两种常见格式）
+        apiUrl = proxyUrl.endsWith("=") || proxyUrl.endsWith("?")
+          ? proxyUrl + "https://api.deepseek.com/v1/chat/completions"
+          : proxyUrl + "https://api.deepseek.com/v1/chat/completions";
+      }
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + apiKey
+        },
+        body: JSON.stringify({
+          model: "deepseek-chat",
+          messages: [
+            { role: "system", content: 命题规范 },
+            { role: "user", content: userText }
+          ],
+          max_tokens: 12000
+        })
+      });
+
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        // 特别提示CORS问题
+        throw new Error(
+          (err.error?.message || `HTTP ${response.status}`) +
+          (response.status === 0 ? "（DeepSeek不支持浏览器直连，请填写代理URL，或改用本地版）" : "")
+        );
+      }
+      const data = await response.json();
+      html = data.choices[0].message.content;
+    }
+
+    // 显示生成的试卷
+    html = html.replace(/```html/g, "").replace(/```/g, "").trim();
+    const iframe = document.getElementById("preview");
+    iframe.srcdoc = html;
+    iframe.style.display = "block";
+    document.getElementById("placeholder").style.display = "none";
+    document.getElementById("barInfo").textContent = "✅ 生成完成，可打印为PDF";
+    document.getElementById("printBtn").disabled = false;
+    showStatus("✅ 生成成功！点击「打印/保存为PDF」", "#27ae60");
+  } catch (e) {
+    console.error(e);
+    // CORS错误友好提示
+    if (e.message && e.message.includes("Failed to fetch")) {
+      showStatus("❌ 浏览器无法直连DeepSeek（CORS限制）。请在左侧填写代理URL，或改用Claude，或使用本地版", "red");
+    } else {
+      showStatus("❌ 生成失败：" + e.message, "red");
+    }
+    document.getElementById("barInfo").textContent = "生成失败";
+  } finally {
+    btn.disabled = false;
+    checkReady();
+  }
+}
+
+// ============================================================
+// 第4部分：打印为PDF
+// ============================================================
+function printPDF() {
+  const iframe = document.getElementById("preview");
+  if (iframe.style.display === "none") return;
+  iframe.contentWindow.focus();
+  iframe.contentWindow.print();
+}
+
+// ============================================================
+// 第5部分：辅助函数
+// ============================================================
+function showStatus(msg, color) {
+  const el = document.getElementById("status");
+  el.textContent = msg;
+  el.style.color = color || "#2d6a9f";
+}
+
+function checkReady() {
+  const apiKey = document.getElementById("apiKey").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const hasFile = uploadedText !== "" || uploadedImage !== null;
+  document.getElementById("genBtn").disabled = !(apiKey && (description || hasFile));
+}
+</script>
+</body>
+</html>
